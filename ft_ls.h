@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:17:11 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/26 03:46:26 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/26 05:49:07 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void				run_option(t_param *par);
  * * Dirige les fichiers/fossiers selon les options.
  */
 void				run_option(t_param *par);
-void				br_ls(char *path, t_param *par);
+void				br_ls(char *path, t_param **par);
 void				t_ls(t_param *par);
 void				r_ls(t_param *par);
 void				l_ls(t_param *par);
@@ -83,7 +83,8 @@ void				a_ls(t_param *par);
 int					is_dir(char *path, t_file *file);
 void				cpy_par(t_param *par, t_param *cpy);
 void				rec_ls(char *path, t_param *par);
-
+void				put_data(char *path, t_param **par);
+int					get_data(char *path, t_file *file);
 /*
  * * Option t Tri en fonction du timestamp
  */

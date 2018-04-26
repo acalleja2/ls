@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 02:09:31 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/26 02:39:13 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/26 04:52:21 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	basic_sort(t_file **file)
 			tmp->next->name = tmp_str;
 			tmp = *file;
 		}
-		tmp = tmp->next;
+		else
+			tmp = tmp->next;
 	}
 	if (!check_sort(*file))
 		basic_sort(file);

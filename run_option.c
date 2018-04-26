@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 22:07:50 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/26 03:24:16 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/26 05:50:06 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	run_option(t_param *par)
 {
 	if (par->br == 1)
-		br_ls("./", par);
+		br_ls("./", &par);
 	else
 	{
 		basic_sort(&par->file);

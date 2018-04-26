@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 00:00:16 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/26 02:56:35 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/26 06:11:53 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 void	print_rec(t_param *par, char *dir)
 {
 	char	*tmp;
+	t_file	*tmp_file;
 
+	tmp_file = par->file;
 	tmp = ft_strdup(dir);
-	basic_sort(&par->file);
-	/*if (par->t == 1)
+	basic_sort(&tmp_file);
+	if (par->t == 1)
 		t_ls(par);
-	if (par->r == 1)
+	/*if (par->r == 1)
 		r_ls(par);
 	if (par->l == 1)
 		l_ls(par);*/
@@ -32,7 +34,7 @@ void	print_rec(t_param *par, char *dir)
 		ft_putchar('\n');
 		ft_printf("%s:\n", del_last_c(tmp));
 	}
-	print_files(par->file);
+	print_files(tmp_file);
 	free(tmp);
 }
 

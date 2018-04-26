@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 21:24:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/26 01:49:05 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/26 04:48:16 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	add_all_files(t_param *par, char *path)
 
 	if ((rep = opendir(path)) == NULL)
 	{
+		printf("path = %s\n", path);
 		error_dir();
 	}
 	while ((file = readdir(rep)))
