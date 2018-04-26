@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 22:23:09 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/26 06:04:11 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/26 07:01:39 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		get_data(char *path, t_file *file)
 	pat = ft_strjoin(path, file->name);
 	if (stat(pat, &file_stat) < 0)
 		error_stat();
-	file->timestamp = ft_atoi(ctime(&file_stat.st_mtime));
 	if (S_ISDIR(file_stat.st_mode))
 		return (1);
 	return (0);
@@ -74,7 +73,7 @@ void	put_data(char *path, t_param **par)
 		pat = ft_strjoin(path, tmp->name);
 		if (stat(pat, &file_stat) < 0)
 			error_stat();
-		tmp->timestamp = file_stat.st_atime;
+		tmp->timestamp = file_stat.st_mtime;
 		if (S_ISDIR(file_stat.st_mode) == 1)
 			tmp->type = 'd';
 		else

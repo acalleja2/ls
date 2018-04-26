@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:17:11 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/26 05:49:07 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/26 06:28:36 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int					get_data(char *path, t_file *file);
  * * Option t Tri en fonction du timestamp
  */
 void				t_ls(t_param *par);
-
+int					check_time(t_file *file);
 /*
  * * Libere toutes les composante de la structure
  */
