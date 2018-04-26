@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_option.c                                       :+:      :+:    :+:   */
+/*   free_par_lst.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/25 22:07:50 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/26 03:24:16 by acalleja         ###   ########.fr       */
+/*   Created: 2018/04/26 00:14:54 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/26 00:19:40 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
 /*
- * * Gere les priorites sur les options
+ * * Free la structure param et toutes ses composantes
  */
-void	run_option(t_param *par)
+void	free_par(t_param *par)
 {
-	if (par->br == 1)
-		br_ls("./", par);
-	else
+	t_file	*tmp;
+
+	tmp = par->file;
+	while (par->file)
 	{
-		basic_sort(&par->file);
-		if (par->t == 1)
-			t_ls(par);
-		/*if (par->r == 1)
-			r_ls(par);
-		if (par->l == 1)
-			l_ls(par);*/
-		print_files(par->file);
+		tmp = tmp->next;
+		free(par->file->name);
+		free(par->file);
+		par->file = tmp;
 	}
+	free(par);
 }
+

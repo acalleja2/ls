@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:17:11 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/25 23:15:30 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/26 03:46:26 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 # include <dirent.h>
 # include "libft/libft.h"
 # include "sys/stat.h"
+# include "time.h"
 /*
  * * struct de la liste des fichiers
  */
 typedef struct		s_file
 {
 	char			*name;
+	int				timestamp;
+	char			type;
 	struct s_file	*next;
 }					t_file;
 
@@ -57,7 +60,8 @@ void				add_all_files(t_param *par, char *path);
  * * Fonction d'affichage des listes
  */
 void				print_files(t_file *file);
-
+void				print_rec(t_param *par, char *dir);
+char				*del_last_c(char *str);
 /*
  * * Direction selon les options
  */
@@ -67,15 +71,33 @@ void				run_option(t_param *par);
  * * Dirige les fichiers/fossiers selon les options.
  */
 void				run_option(t_param *par);
-void				br_ls(t_param *par);
+void				br_ls(char *path, t_param *par);
 void				t_ls(t_param *par);
 void				r_ls(t_param *par);
 void				l_ls(t_param *par);
+void				a_ls(t_param *par);
 
 /*
  * * Option R en recurssif
  */
+int					is_dir(char *path, t_file *file);
 void				cpy_par(t_param *par, t_param *cpy);
-void				rec_ls(char *path);
+void				rec_ls(char *path, t_param *par);
+
+/*
+ * * Option t Tri en fonction du timestamp
+ */
+void				t_ls(t_param *par);
+
+/*
+ * * Libere toutes les composante de la structure
+ */
+void				free_par(t_param *par);
+
+/*
+ * * Fonctions de tri des listes
+ */
+void				basic_sort(t_file **file);
+int					check_sort(t_file *file);
 
 #endif

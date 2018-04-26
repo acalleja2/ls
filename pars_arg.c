@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 20:01:27 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/25 20:58:00 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/26 01:49:49 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,14 @@ void	up_flag(t_param *par, char *str)
 }
 
 /*
- * * ajoute un fichier/dossier dans la liste de la structure param en push_front
+ * * ajoute un fichier/dossier dans la liste de la structure param en push_back
  */
 void	add_file(t_param *par, char *str)
 {
 	t_file		*tmp;
+	t_file		*last;
 
+	last = par->file;
 	if (par->file == NULL)
 	{
 		par->file = (t_file *)ealloc(sizeof(t_file));
@@ -66,9 +68,11 @@ void	add_file(t_param *par, char *str)
 	}
 	else
 	{
+		while (last->next)
+			last = last->next;
 		tmp = (t_file *)ealloc(sizeof(t_file));
 		tmp->name = ft_strdup(str);
-		tmp->next = par->file;
-		par->file = tmp;
+		tmp->next = NULL;
+		last->next = tmp;
 	}
 }
